@@ -1,0 +1,291 @@
+<!doctype html>
+<html lang="kk">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Profile — aynwwxz</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root{
+      --bg:#eef2f6;
+      --panel:#ffffff;
+      --muted:#9aa3ad;
+      --accent-1: #6e44ff; /* violet */
+      --accent-2: #9b7bff;
+      --soft-shadow: 0 10px 30px rgba(26,30,50,0.08);
+      --glass-shadow: 0 6px 24px rgba(26,30,50,0.06);
+      --radius: 18px;
+      --radius-sm: 10px;
+    }
+
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: "Inter", system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background: linear-gradient(180deg,#e9f0ff 0%, #fff7ef 100%);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:32px;
+      color:#16202a;
+    }
+
+    /* Main framed panel */
+    .frame{
+      width:1100px;
+      max-width:96vw;
+      height:720px;
+      border-radius:28px;
+      background:var(--panel);
+      box-shadow: var(--soft-shadow);
+      display:flex;
+      overflow:hidden;
+    }
+
+    /* left slim sidebar */
+    .sidebar{
+      width:72px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.85));
+      border-right:1px solid rgba(16,24,32,0.04);
+      display:flex;
+      flex-direction:column;
+      align-items:center;
+      padding:18px 10px;
+      gap:12px;
+    }
+    .logo{
+      width:36px;height:36px;border-radius:10px;
+      background:linear-gradient(135deg,var(--accent-1),var(--accent-2));
+      box-shadow: 0 4px 12px rgba(107,84,255,0.18);
+      display:flex;align-items:center;justify-content:center;
+      color:white;font-weight:700;font-size:14px;
+    }
+    .icon{
+      width:44px;height:44px;border-radius:10px;display:flex;align-items:center;justify-content:center;
+      cursor:pointer;color:var(--muted);font-size:18px;
+    }
+    .icon.active{background:rgba(111,66,255,0.08);color:var(--accent-1)}
+
+    /* content area */
+    .content{
+      flex:1;
+      padding:22px 28px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+    }
+
+    /* top header */
+    .top{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+    }
+    .top-left{
+      display:flex;
+      flex-direction:column;
+      gap:4px;
+    }
+    .greet{
+      font-size:18px;font-weight:600;
+    }
+    .date{font-size:13px;color:var(--muted)}
+
+    .top-right{
+      display:flex;align-items:center;gap:12px;
+    }
+    .search{
+      width:420px; max-width:45vw;
+      background:#f5f7fb;border-radius:12px;padding:10px 14px;display:flex;align-items:center;gap:10px;
+      border:1px solid rgba(16,24,32,0.03);
+    }
+    .search input{border:0;background:transparent;outline:none;width:100%;font-size:14px;color:#44505a}
+    .avatar{
+      width:40px;height:40px;border-radius:10px;overflow:hidden;border:2px solid #fff;box-shadow:var(--glass-shadow);
+    }
+    .avatar img{width:100%;height:100%;object-fit:cover;display:block}
+
+    /* hero header with violet gradient */
+    .hero{
+      margin-top:6px;
+      height:64px;
+      border-radius:12px;
+      background: linear-gradient(90deg, rgba(123,82,255,0.18), rgba(163,133,255,0.12));
+      padding:12px;
+      box-shadow: var(--glass-shadow);
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    /* main card */
+    .card{
+      margin-top:8px;
+      flex:1;
+      background:linear-gradient(180deg, #ffffff, #fbfdff);
+      border-radius:12px;
+      padding:22px;
+      box-shadow: var(--glass-shadow);
+      overflow:auto;
+    }
+
+    .profile-top{
+      display:flex;
+      align-items:center;
+      gap:16px;
+      border-bottom:1px solid rgba(16,24,32,0.04);
+      padding-bottom:16px;margin-bottom:18px;
+    }
+    .profile-photo{
+      width:72px;height:72px;border-radius:40px;overflow:hidden;border:4px solid white;box-shadow:0 8px 20px rgba(16,24,40,0.06)
+    }
+    .profile-photo img{width:100%;height:100%;object-fit:cover}
+    .profile-name{font-weight:700;font-size:16px}
+    .profile-email{color:var(--muted);font-size:13px;margin-top:4px}
+
+    .edit-btn{
+      margin-left:auto;
+      background:linear-gradient(180deg,var(--accent-1),var(--accent-2));
+      color:white;padding:10px 14px;border-radius:10px;border:0;cursor:pointer;font-weight:600;
+      box-shadow:0 6px 18px rgba(107,84,255,0.14)
+    }
+
+    /* form grid */
+    .form-grid{
+      display:grid;
+      grid-template-columns:1fr 1fr;
+      gap:18px;
+    }
+    .field{
+      display:flex;flex-direction:column;gap:8px;
+    }
+    .label{font-size:13px;color:#5b6670;font-weight:600}
+    .input, .select{
+      height:42px;border-radius:10px;border:1px solid rgba(16,24,32,0.04);
+      padding:10px 12px;background:#fafbfc;outline:none;font-size:14px;color:#27323a;
+    }
+    .select{display:flex;align-items:center;justify-content:space-between}
+
+    /* small email list */
+    .email-list{margin-top:18px}
+    .email-item{display:flex;align-items:center;gap:12px;padding:12px;border-radius:10px;background:#fafbff;border:1px solid rgba(16,24,32,0.02)}
+    .email-item .dot{width:36px;height:36px;border-radius:10px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--accent-1),var(--accent-2));color:white;font-weight:700}
+    .add-email{margin-top:12px;display:inline-block;padding:8px 12px;border-radius:10px;background:#eef2ff;color:var(--accent-1);font-weight:600;border:0}
+
+    /* responsive */
+    @media (max-width:900px){
+      .frame{height:auto;flex-direction:column;padding:12px}
+      .sidebar{display:none}
+      .content{padding:14px}
+      .form-grid{grid-template-columns:1fr}
+      .search{width:250px}
+    }
+  </style>
+</head>
+<body>
+  <div class="frame" role="main" aria-label="Profile dashboard">
+    <aside class="sidebar" aria-hidden="true">
+      <div class="logo">A</div>
+      <div class="icon active" title="Dashboard">▦</div>
+      <div class="icon" title="Stats">⎈</div>
+      <div class="icon" title="Messages">✉</div>
+      <div class="icon" title="Settings">⚙</div>
+    </aside>
+
+    <section class="content">
+      <div class="top">
+        <div class="top-left">
+          <div class="greet">Welcome, <span style="color:var(--accent-1)">aynwwxz</span></div>
+          <div class="date">Tue, 07 June 2022</div>
+        </div>
+
+        <div class="top-right">
+          <div class="search" role="search" aria-label="Search">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M21 21l-4.35-4.35" stroke="#9aa3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="11" cy="11" r="6" stroke="#9aa3ad" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg>
+            <input placeholder="Search" />
+          </div>
+
+          <div style="display:flex;align-items:center;gap:10px">
+            <div style="width:36px;height:36px;border-radius:8px;background:#f2f6fb;display:flex;align-items:center;justify-content:center;font-weight:600;color:var(--accent-1)">🔔</div>
+            <div class="avatar"><img src="https://i.pravatar.cc/80?img=68" alt="avatar"></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="hero" aria-hidden="true">
+        <!-- subtle violet gradient header area -->
+        <div style="flex:1;display:flex;align-items:center;gap:12px">
+          <div style="width:36px;height:36px;border-radius:8px;background:rgba(111,66,255,0.12);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent-1)">ayn</div>
+          <div>
+            <div style="font-weight:700">Account overview</div>
+            <div style="font-size:13px;color:var(--muted)">Manage your profile and preferences</div>
+          </div>
+        </div>
+        <div style="font-size:13px;color:var(--muted)">Last active: 1 month ago</div>
+      </div>
+
+      <div class="card">
+        <div class="profile-top">
+          <div class="profile-photo"><img src="https://i.pravatar.cc/160?img=12" alt="profile photo"></div>
+          <div>
+            <div class="profile-name">aynwwxz</div>
+            <div class="profile-email">aynwwxz@example.com</div>
+          </div>
+
+          <button class="edit-btn" aria-label="Edit profile">Edit</button>
+        </div>
+
+        <form class="form-grid" onsubmit="return false;">
+          <div class="field">
+            <label class="label">Full Name</label>
+            <input class="input" value="aynwwxz" />
+          </div>
+
+          <div class="field">
+            <label class="label">Nick Name</label>
+            <input class="input" placeholder="Nickname" />
+          </div>
+
+          <div class="field">
+            <label class="label">Gender</label>
+            <div class="select">Select <span style="opacity:.5">▾</span></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Country</label>
+            <div class="select">Kazakhstan <span style="opacity:.5">▾</span></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Language</label>
+            <div class="select">Қазақша <span style="opacity:.5">▾</span></div>
+          </div>
+
+          <div class="field">
+            <label class="label">Time Zone</label>
+            <div class="select">GMT+05:00 <span style="opacity:.5">▾</span></div>
+          </div>
+        </form>
+
+        <div class="email-list">
+          <div style="font-weight:700;margin-bottom:8px">My email Address</div>
+
+          <div class="email-item" style="display:flex;align-items:center;gap:12px;margin-bottom:10px;">
+            <div class="dot">📧</div>
+            <div style="flex:1">
+              <div style="font-weight:600">aynwwxz@example.com</div>
+              <div style="font-size:13px;color:var(--muted)">1 month ago</div>
+            </div>
+            <div style="font-size:13px;color:var(--muted)">Primary</div>
+          </div>
+
+          <button class="add-email">+ Add Email Address</button>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</body>
+</html>
